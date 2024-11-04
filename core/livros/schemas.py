@@ -5,7 +5,7 @@ from .models import Livros
 class LivrosSchema(ModelSchema):
     class Meta:
         model = Livros
-        fields = ['name', 'streaming', 'categorie']
+        fields = ['id', 'name', 'streaming', 'categorie', 'note', 'comments']
 
 class AvaliacaoSchema(ModelSchema):
     class Meta:

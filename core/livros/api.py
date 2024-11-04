@@ -11,14 +11,22 @@ def get_livro(request):
     livros_data = [LivrosSchema.from_orm(livro).dict() for livro in livros]
     return {"response": livros_data}
 
+# @livros_router.get("/avaliacoes/{livro_id}", response={200: list[AvaliacaoSchema], 404: dict})
+# def listar_avaliacoes(request, livro_id: int):
+#     livros = Livros.objects.get(id=livro_id)
+#     # Serializando objetos usando LivrosSchema
+#     livros_avaliacao =  livros.Ava.all()
+#     return {"response": livros_avaliacao}
+
 
 @livros_router.post('/', response={200: dict, 400: dict})
 def create_book(request, livro_schema: LivrosSchema):
+    id = livro_schema.id
     name = livro_schema.name
     streaming = livro_schema.streaming
     categories = livro_schema.categorie
 
-    if streaming not in ['FI', 'AK']:                   
+    if streaming not in ['Fisico', 'Amazon Kindle']:                   
         return 400, {"status": "erro", "message": "Streaming inválido."}                        
 
     livro = Livros(name=name, streaming=streaming)

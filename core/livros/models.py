@@ -9,11 +9,11 @@ class Categories(models.Model):
 
 class Livros(models.Model):
     streaming_choices = (
-        ('AK', 'Amazon Kindle'),
-        ('FI', 'Físico'),
+        ('Amazon Kindle', 'Amazon Kindle'),
+        ('Fisico', 'Físico'),
     )
     name = models.CharField(max_length=50)
-    streaming = models.CharField(max_length=2, choices=streaming_choices)
+    streaming = models.CharField(max_length=20, choices=streaming_choices)
     note = models.IntegerField(null=True, blank=True)
     comments = models.TextField(null=True, blank=True)
     categorie = models.ManyToManyField(Categories)  # Corrigido para "categorie"
